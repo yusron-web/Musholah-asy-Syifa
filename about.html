@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>About Me - Musholah</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: #2c2f3a;
+      color: white;
+    }
+
+    .light-mode {
+      background-color: white;
+      color: black;
+    }
+
+    .header {
+      background-color: #1e212b;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .light-mode .header {
+      background-color: #f0f0f0;
+      color: black;
+    }
+
+    .main {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .light-mode a.back {
+      background-color: #ddd;
+      color: black;
+    }
+  </style>
+</head>
+<body class="dark-mode">
+  <div class="header">
+    <h1>Tentang Saya</h1>
+  </div>
+  <div class="main">
+    <p>Selamat datang di halaman "About Me".</p>
+    <p>Website ini dibuat untuk informasi dan pengembangan Musholah Asy-Syifa. Halaman ini akan saya perbarui dengan biodata, tujuan pembuatan, serta visi dan misi musholah.</p>
+    
+    <p>Terima kasih sudah berkunjung!</p>
+
+    <a href="index.html" class="back">← Kembali ke Home</a>
+  </div>
+
+  <script>
+    // Jika kamu pakai localStorage untuk mode tema
+    const mode = localStorage.getItem("theme");
+    if (mode === "light") {
+      document.body.classList.remove("dark-mode");
+      document.body.classList.add("light-mode");
+    }
+  </script>
+</body>
+</html>

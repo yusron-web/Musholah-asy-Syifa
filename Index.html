@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Musholah</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: #2c2f3a;
+      color: white;
+    }
+
+    .light-mode {
+      background-color: white;
+      color: black;
+    }
+
+    .header {
+      background-color: #1e212b;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .light-mode .header {
+      background-color: #f0f0f0;
+      color: black;
+    }
+
+    .menu-icon {
+      font-size: 28px;
+      cursor: pointer;
+      margin-right: 15px;
+    }
+
+    .header img {
+      height: 40px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100vh;
+      background-color: #1e212b;
+      color: white;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 1001;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .light-mode .sidebar {
+      background-color: #f0f0f0;
+      color: black;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px 0;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .sidebar h3 {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .main {
+      padding: 20px;
+      z-index: 1;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .image-container {
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #aaa;
+      margin: 10px 0;
+    }
+
+    .custom-text {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .bottom-text {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="dark-mode">
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a onclick="closeMenu()">✖ Tutup</a>
+    <a href="#" onclick="closeMenu()">Home</a>
+    <a href="#" onclick="closeMenu()">Akun</a>
+    <a href="about.html" onclick="closeMenu()">About Me</a>
+    <h3>Setting</h3>
+    <a onclick="setTheme('light')">🌞 Mode Terang</a>
+    <a onclick="setTheme('dark')">🌙 Mode Gelap</a>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <img src="Logo.png" alt="Logo Musholah">
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="main">
+    <div class="title">Web Musholah Asy-Syifa</div>
+    <div class="image-container">
+      <img src="Logo.png" alt="Musholah Asy-Syifa">
+    </div>
+    <div class="meta">by yusron | Juni 16, 2025</div>
+    <div class="custom-text">
+      **Musholah Asy-Syifa** adalah sebuah tempat ibadah umat Islam yang dibangun pada bulan Januari tahun 2025. Musholah ini terletak di lingkungan yang tenang dan religius, tepatnya di **Desa Bakung Lor**, Kecamatan **Jamblang**, Kabupaten **Cirebon**, Provinsi Jawa Barat.
+ 
+Pembangunan Musholah Asy-Syifa didorong oleh semangat kebersamaan warga setempat dalam menyediakan sarana ibadah yang nyaman, bersih, dan dapat digunakan untuk kegiatan keagamaan sehari-hari, seperti salat berjamaah, pengajian, serta kegiatan sosial keagamaan lainnya.
+ 
+Dengan suasana yang tenang dan lingkungan yang mendukung, Musholah Asy-Syifa diharapkan menjadi pusat spiritual sekaligus penguat tali silaturahmi masyarakat di sekitarnya.
+  <br>
+      Jika ada saran, hubungi saya.
+    </div>
+
+    <!-- Foto Tambahan -->
+    <div class="image-container" style="margin-top: 20px;">
+      <img src="foto.jpg" alt="Foto tambahan di bawah">
+    </div>
+
+    <!-- Teks di bawah foto -->
+    <div class="bottom-text">
+      Foto mushola Asy-Syifa
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('sidebar').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+
+    function closeMenu() {
+      document.getElementById('sidebar').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+    }
+
+    function setTheme(mode) {
+      const body = document.body;
+      if (mode === 'light') {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+      } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+      }
+    }
+  </script>
+</body>
+</html>
